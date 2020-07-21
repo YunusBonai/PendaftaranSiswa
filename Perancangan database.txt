@@ -1,0 +1,68 @@
+CREATE DATABASE pmb_db;
+
+CREATE TABLE staff(
+    nik CHAR (5) NOT NULL,
+    nama_staff VARCHAR (50) NOT NULL,
+    no_telp_staff VARCHAR(12) NOT NULL,
+	password VARCHAR(50) NOT NULL,
+    PRIMARY KEY (nik)
+);
+
+INSERT INTO staff VALUES ('12341', 'Hendra Kurniawan', '085712345678', 'hendra');
+INSERT INTO staff VALUES ('12342', 'Agus Setiawan', '081393123456', 'agus');
+INSERT INTO staff VALUES ('12343', 'Andi Wibowo', '085681123456', 'andi');
+INSERT INTO staff VALUES ('12344', 'Ari Darmawan', '081229876599', 'ari');
+
+CREATE TABLE sekolah(
+    npsn CHAR (8) NOT NULL,
+    nama_sekolah varchar(100) NOT NULL,
+	alamat_sekolah varchar(100) NOT NULL,
+	kecamatan varchar(30) NOT NULL,
+	kabupaten varchar(30) NOT NULL,
+	provinsi varchar(30) NOT NULL,
+	no_telp_sekolah VARCHAR(12) NOT NULL,
+	PRIMARY KEY (npsn)
+);
+
+INSERT INTO sekolah VALUES ('20504477', 'SMAN 1 Ngraho', 'Jl. Raya Ngraho No. 60 Ngraho, Sumberarum', 'Ngraho', 'Bojonegoro', 'Jawa Timur', '081223344991');
+INSERT INTO sekolah VALUES ('20541243', 'SMAN 1 Tambakrejo', 'Jl. Raya Taji Ngambon, Bakalan', 'Tambakrejo', 'Bojonegoro', 'Jawa Timur', '081223344992');
+INSERT INTO sekolah VALUES ('20328897', 'SMAN 16 Mijen', 'Jl. Ngadirgo Tengah', 'Mijen', 'Semarang', 'Jawa Tengah', '081223344993');
+INSERT INTO sekolah VALUES ('20331903', 'SMA Kesatrian 1', 'Jl. Pamularsih No. 116', 'Semarang Barat', 'Kota Semarang', 'Jawa Tengah', '081223344994');
+INSERT INTO sekolah VALUES ('20403179', 'SMAN 4 Yogyakarta', 'Jl. Magelang Karangwaru Lor', 'Tegalrejo', 'Kota Yogyakarta', 'D.I. Yogyakarta', '081223344995');
+INSERT INTO sekolah VALUES ('20403180', 'SMAN 5 Yogyakarta', 'Jl. Nyi Pembayun 39 Kotagede', 'Kotagede', 'Kota Yogyakarta', 'D.I. Yogyakarta', '081223344996');
+
+CREATE TABLE pekerjaan(
+    kode_pekerjaan char(4) NOT NULL,
+	nama_pekerjaan varchar(30) NOT NULL,
+	PRIMARY KEY (kode_pekerjaan)
+);
+
+INSERT INTO pekerjaan VALUES ('P001', 'Pengusaha');
+INSERT INTO pekerjaan VALUES ('P002', 'Pegawai Negeri');
+INSERT INTO pekerjaan VALUES ('P003', 'TNI/POLRI');
+INSERT INTO pekerjaan VALUES ('P004', 'Pegawai BUMN');
+INSERT INTO pekerjaan VALUES ('P005', 'Pensiunan');
+INSERT INTO pekerjaan VALUES ('P006', 'Ibu Rumah Tangga');
+INSERT INTO pekerjaan VALUES ('P007', 'Pegawai Swasta');
+INSERT INTO pekerjaan VALUES ('P008', 'Pedagang');
+INSERT INTO pekerjaan VALUES ('P009', 'Petani');
+INSERT INTO pekerjaan VALUES ('P010', 'Dan Lain-lain');
+
+CREATE TABLE pendaftaran(
+    no_pendaftaran CHAR (10) NOT NULL,
+    tanggal_pendaftaran date NOT NULL,
+	tahun_ajaran varchar(9) NOT NULL,
+	nisn char(10) NOT NULL,
+	nama_siswa varchar(50) NOT NULL,
+	jenis_kelamin enum('L','P') NOT NULL,
+	tempat_lahir varchar(30) NOT NULL,
+	tanggal_lahir date NOT NULL,
+	alamat_siswa varchar(100) NOT NULL,
+	no_sekolah char(8) NOT NULL,
+	nama_ayah varchar(50) NOT NULL,
+	pekerjaan_ayah char(3) NOT NULL,
+	nama_ibu varchar(50) NOT NULL,
+	pekerjaan_ibu char(3) NOT NULL,
+	alamat_Ortu varchar(100) NOT NULL,
+	PRIMARY KEY (no_pendaftaran)
+);
