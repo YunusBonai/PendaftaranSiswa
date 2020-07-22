@@ -5,7 +5,7 @@
  */
 package view;
 
-import controller.PekerjaanController;
+//import controller.PekerjaanController;
 import controller.PendaftaranController;
 import controller.SekolahController;
 import java.text.SimpleDateFormat;
@@ -25,7 +25,7 @@ public class PendaftaranForm extends javax.swing.JInternalFrame {
     //1. Mendeklarasikan variabel
     private PendaftaranController control;
     private SekolahController controlSekolah;
-    private PekerjaanController controlPekerjaan;
+//    private PekerjaanController controlPekerjaan;
     private List<PekerjaanModel> listPekerjaan;
     private List<SekolahModel> listSekolah;
     
@@ -37,7 +37,7 @@ public class PendaftaranForm extends javax.swing.JInternalFrame {
         
         //2. Membuat objek
         control = new PendaftaranController(this);
-        controlPekerjaan = new PekerjaanController();
+//        controlPekerjaan = new PekerjaanController();
         controlSekolah = new SekolahController();
         
         tampilData();
@@ -64,43 +64,41 @@ public class PendaftaranForm extends javax.swing.JInternalFrame {
     }
     
     //4. Metode untuk pilih sekolah
-    public void sekolahTerpilih(){
-        DaftarSekolahForm form = new DaftarSekolahForm();
-        form.daftarForm = this;
-        tfAsalSekolah.setText(noSekolah + " - " + namaSekolah);
-    }
+//    public void sekolahTerpilih(){
+//        DaftarSekolahForm form = new DaftarSekolahForm();
+//        form.daftarForm = this;
+//        tfAsalSekolah.setText(noSekolah + " - " + namaSekolah);
+//    }
     
     //5. Metode untuk menampilkan data
     public void tampilData(){
         //6. Objek untuk menentukan tanggal pendaftaran
-        Date d = new Date();
-        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-        tfTanggalPendaftaran.setText(sdf1.format(d));
-        
-        tfNoPendaftaran.setText(control.buatNoPendaftaran(sdf1.format(d)));
+//        Date d = new Date();
+//        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+//        tfTanggalPendaftaran.setText(sdf1.format(d));
+//        
+//        tfNoPendaftaran.setText(control.buatNoPendaftaran(sdf1.format(d)));
         
         //7. Objek untuk menentukan tahun ajaran
-        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy");
-        int tahun = Integer.parseInt(sdf2.format(d));
-        tfTahunAjaran.setText(sdf2.format(d) + "/" + (tahun + 1));
+//        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy");
+//        int tahun = Integer.parseInt(sdf2.format(d));
+//        tfTahunAjaran.setText(sdf2.format(d) + "/" + (tahun + 1));
         
         //8. Untuk mengisi combo box pekerjaan ayah dan ibu
-        cbPekerjaanAyah.removeAllItems();
-        cbPekerjaanIbu.removeAllItems();
-        listPekerjaan = controlPekerjaan.selectPekerjaan();
-        for (PekerjaanModel data : listPekerjaan){
-            cbPekerjaanAyah.addItem(data.getKodePekerjaan()+ " - " + data.getNamaPekerjaan());
-            cbPekerjaanIbu.addItem(data.getKodePekerjaan()+ " - " + data.getNamaPekerjaan());
-        }
-        tfNisn.setText(null);
-        tfNama.setText(null);
-        rbLaki.isSelected();
-        tfTempatLahir.setText(null);
-        tfAlamat.setText(null);
-        tfAsalSekolah.setText(null);
-        tfNamaAyah.setText(null);
-        tfNamaIbu.setText(null);
-        tfAlamatOrtu.setText(null);
+//        cbPekerjaanAyah.removeAllItems();
+//        cbPekerjaanIbu.removeAllItems();
+//        listPekerjaan = controlPekerjaan.selectPekerjaan();
+//        for (PekerjaanModel data : listPekerjaan){
+//            cbPekerjaanAyah.addItem(data.getKodePekerjaan()+ " - " + data.getNamaPekerjaan());
+//            cbPekerjaanIbu.addItem(data.getKodePekerjaan()+ " - " + data.getNamaPekerjaan());
+//        }
+
+        txtIDSiswa.setText(null);
+        txtNISN.setText(null);
+        txtNamaSiswa.setText(null);
+        rbLakilaki.isSelected();
+        txtTahunAngkatan.setText(null);
+        txtEmail.setText(null);
     }
 
     /**
@@ -133,7 +131,6 @@ public class PendaftaranForm extends javax.swing.JInternalFrame {
         txtTahunAngkatan = new javax.swing.JTextField();
         rbLakilaki = new javax.swing.JRadioButton();
         rbPerempuan = new javax.swing.JRadioButton();
-        dateTanggalLahir = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSiswa = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
@@ -180,7 +177,6 @@ public class PendaftaranForm extends javax.swing.JInternalFrame {
         );
 
         jPanel5.setBackground(new java.awt.Color(51, 153, 255));
-        jPanel5.setBorder(null);
 
         jLabel2.setText("ID Siswa");
 
@@ -340,8 +336,7 @@ public class PendaftaranForm extends javax.swing.JInternalFrame {
                                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtNISN, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtNamaSiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtIDSiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(dateTanggalLahir, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtIDSiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -372,10 +367,8 @@ public class PendaftaranForm extends javax.swing.JInternalFrame {
                             .addComponent(jLabel5)
                             .addComponent(rbLakilaki)
                             .addComponent(rbPerempuan))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dateTanggalLahir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel6)
                         .addGap(20, 20, 20)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
@@ -445,6 +438,7 @@ public class PendaftaranForm extends javax.swing.JInternalFrame {
 
     private void btnTutupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTutupActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnTutupActionPerformed
 
 
@@ -456,7 +450,6 @@ public class PendaftaranForm extends javax.swing.JInternalFrame {
     private java.awt.Button btnTutup;
     private java.awt.Button btnUbah;
     private javax.swing.ButtonGroup buttonGroup1;
-    private com.toedter.calendar.JDateChooser dateTanggalLahir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

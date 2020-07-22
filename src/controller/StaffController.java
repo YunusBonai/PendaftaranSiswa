@@ -8,7 +8,7 @@ package controller;
 import java.util.List;
 import model.StaffModel;
 import view.LoginForm;
-import view.PenggunaForm;
+//import view.PenggunaForm;
 import view.StaffForm;
 
 /**
@@ -19,7 +19,7 @@ public class StaffController {
     //1. Mendeklarasikan objek
     private LoginForm view1;
     private StaffModel model;
-    private PenggunaForm view2;
+//    private PenggunaForm view2;
     private StaffForm view3;
     
     public StaffController(LoginForm view) {
@@ -27,10 +27,10 @@ public class StaffController {
         model = new StaffModel();
     }
 
-    public StaffController(PenggunaForm view2) {
-        this.view2 = view2;
-        model = new StaffModel();
-    }
+//    public StaffController(PenggunaForm view2) {
+//        this.view2 = view2;
+//        model = new StaffModel();
+//    }
 
     public StaffController(StaffForm view3) {
         this.view3 = view3;
@@ -38,11 +38,16 @@ public class StaffController {
     }
     
     //2. Metode untuk input data
-    public void inputStaff(String nik, String nama, String telp, String password){
+    public void inputStaff(String nik, String nama, String password, String telp, String alamat,
+            String email, String jabatan){
         model.setNik(nik);
         model.setNama(nama);
-        model.setTelp(telp);
+//        model.setJenisKel(jk);
         model.setPassword(password);
+        model.setTelp(telp);
+        model.setAlamat(alamat);
+        model.setEmail(email);
+        model.setJabatan(jabatan);    
     }
     
     //3. Metode untuk login
@@ -60,7 +65,8 @@ public class StaffController {
     public static String getNama(){
         return StaffModel.getNamaLogin();
     }
-
+    
+    
     public static String getTelp(){
         return StaffModel.getTelpLogin();
     }

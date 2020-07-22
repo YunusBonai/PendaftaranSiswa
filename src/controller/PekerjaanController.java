@@ -7,7 +7,7 @@ package controller;
 
 import java.util.List;
 import model.PekerjaanModel;
-import view.PekerjaanForm;
+//import view.PekerjaanForm;
 
 /**
  *
@@ -15,17 +15,17 @@ import view.PekerjaanForm;
  */
 public class PekerjaanController {
     //1. Mendeklarasikan objek
-    private PekerjaanForm view;
+//    private PekerjaanForm view;
     private PekerjaanModel model;
 
     public PekerjaanController() {
         model = new PekerjaanModel();
     }
 
-    public PekerjaanController(PekerjaanForm view) {
-        this.view = view;
-        model = new PekerjaanModel();
-    }
+//    public PekerjaanController(PekerjaanForm view) {
+//        this.view = view;
+//        model = new PekerjaanModel();
+//    }
 
     //2. Metode untuk input data
     public void inputPekerjaan(String kodePekerjaan, String namaPekerjaan){

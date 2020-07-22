@@ -39,7 +39,7 @@ public class StaffForm extends javax.swing.JInternalFrame {
         
         //3. Membuat tabel data staff
         proses = "";
-        tabelHeader = new String[]{"NIK", "Nama Staff", "Telp", "Password"};
+        tabelHeader = new String[]{"NIK", "Nama Staff", "Password", "Telp", "Alamat","Email","Jabatan"};
         dtStaff = new DefaultTableModel(null, tabelHeader);
         tblGuru.setModel(dtStaff);
         tblGuru.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -48,32 +48,38 @@ public class StaffForm extends javax.swing.JInternalFrame {
                 //throw new UnsupportedOperationException("Not supported yet.");
                 row = tblGuru.getSelectedRow();
                 if (row >= 0) {
-                    tfNik.setText(dtStaff.getValueAt(row, 0).toString());
-                    tfNama.setText(dtStaff.getValueAt(row, 1).toString());
-                    tfNoTelp.setText(dtStaff.getValueAt(row, 2).toString());
-                    tfPassword.setText(dtStaff.getValueAt(row, 3).toString());
+                    txtNIK.setText(dtStaff.getValueAt(row, 0).toString());
+                    txtNamaGuru.setText(dtStaff.getValueAt(row, 1).toString());
+                    txtNoTelp.setText(dtStaff.getValueAt(row, 2).toString());
+                    txtPassword.setText(dtStaff.getValueAt(row, 3).toString());
+                    txtEmail.setText(dtStaff.getValueAt(row, 3).toString());
+                    txtEmail.setText(dtStaff.getValueAt(row, 3).toString());
                 }
             }
         });
-        refreshTable();
     }
     
     //4. Metode untuk mengatur teks
     public void aturText(boolean status) {
-        tfCari.setEditable(status);
-        tfNik.setEditable(!status);
-        tfNama.setEditable(!status);
-        tfNoTelp.setEditable(!status);
-        tfPassword.setEditable(!status);
+//        tfCari.setEditable(status);
+        txtNIK.setEditable(!status);
+        txtNamaGuru.setEditable(!status);
+        txtNoTelp.setEditable(!status);
+        txtPassword.setEditable(!status);
+        txtEmail.setEditable(!status);
+        txtAlamat.setEditable(!status);
     }
     
     //5. Metode untuk mengatur tombol
     public void aturButton(boolean status) {
-        bCari.setEnabled(status);
-        bRefresh.setEnabled(status);
-        bTambah.setEnabled(status);
-        bSimpan.setEnabled(!status);
+//        bCari.setEnabled(status);
+        btnBatal.setEnabled(status);
+        btnHapus.setEnabled(status);
+        btnSimpan.setEnabled(!status);
+        btnTambah.setEnabled(status);
+        btnUbah.setEnabled(status);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -121,6 +127,11 @@ public class StaffForm extends javax.swing.JInternalFrame {
         jLabel1.setText("Daftar Guru dan Staff");
 
         btnTutup.setLabel("Tutup");
+        btnTutup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTutupActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,7 +155,6 @@ public class StaffForm extends javax.swing.JInternalFrame {
         );
 
         jPanel4.setBackground(new java.awt.Color(51, 153, 255));
-        jPanel4.setBorder(null);
 
         tblGuru.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tblGuru.setModel(new javax.swing.table.DefaultTableModel(
@@ -198,6 +208,11 @@ public class StaffForm extends javax.swing.JInternalFrame {
         btnBatal.setLabel("Batal");
 
         btnSimpan.setLabel("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -340,39 +355,63 @@ public class StaffForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+          
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
         // TODO add your handling code here:
+        aturButton(false);
+        aturText(false);
+//        btnTutup.setText("Kembali");
+        txtNIK.setText(null);
+        txtNamaGuru.setText(null);
+        txtNoTelp.setText(null);
+        txtPassword.setText(null);
+        txtEmail.setText(null);
+        txtJabatan.setText(null);
+        txtNIK.requestFocus();
     }//GEN-LAST:event_btnTambahActionPerformed
 
     private void txtNIKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNIKActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNIKActionPerformed
 
-    private void refreshTable() {
-        if (proses.equalsIgnoreCase("")) {
-            listStaff = control.selectStaff("", "");
-        } else if (proses.equals("CARI")) {
-            listStaff = control.selectStaff(tfCari.getText(), tfCari.getText());
-        }
+    private void btnTutupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTutupActionPerformed
+        // TODO add your handling code here:
+            dispose();
+    }//GEN-LAST:event_btnTutupActionPerformed
 
-        dtStaff = (DefaultTableModel) tblGuru.getModel();
-        dtStaff.setRowCount(0);
-        for (StaffModel data : listStaff) {
-            dtStaff.addRow(new Object[]{
-                data.getNik(),
-                data.getNama(),
-                data.getTelp(),
-                data.getPassword()});
-        }
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        // TODO add your handling code here:
+         control.inputStaff(txtNIK.getText(), txtNamaGuru.getText(),
+                txtPassword.getText(),txtNoTelp.getText(),
+                txtAlamat.getText(), txtEmail.getText(), txtJabatan.getText());
+        
+    }//GEN-LAST:event_btnSimpanActionPerformed
 
-        if (tblGuru.getRowCount() > 0) {
-            row = tblGuru.getRowCount() - 1;
-            tblGuru.setRowSelectionInterval(row, row);
-            aturButton(true);
-            aturText(true);
-            proses = "";
-        }
-    }
+//    private void refreshTable() {
+//        if (proses.equalsIgnoreCase("")) {
+//            listStaff = control.selectStaff("", "");
+//        } else if (proses.equals("CARI")) {
+//            listStaff = control.selectStaff(tfCari.getText(), tfCari.getText());
+//        }
+//
+//        dtStaff = (DefaultTableModel) tblGuru.getModel();
+//        dtStaff.setRowCount(0);
+//        for (StaffModel data : listStaff) {
+//            dtStaff.addRow(new Object[]{
+//                data.getNik(),
+//                data.getNama(),
+//                data.getTelp(),
+//                data.getPassword()});
+//        }
+//
+//        if (tblGuru.getRowCount() > 0) {
+//            row = tblGuru.getRowCount() - 1;
+//            tblGuru.setRowSelectionInterval(row, row);
+//            aturButton(true);
+//            aturText(true);
+//            proses = "";
+//        }
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button btnBatal;

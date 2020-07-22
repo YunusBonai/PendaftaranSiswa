@@ -7,7 +7,7 @@ package controller;
 
 import java.util.List;
 import model.SekolahModel;
-import view.SekolahForm;
+//import view.SekolahForm;
 
 /**
  *
@@ -15,17 +15,17 @@ import view.SekolahForm;
  */
 public class SekolahController {
     //1. Mendeklarasikan objek
-    private SekolahForm view;
+//    private SekolahForm view;
     private SekolahModel model;
 
     public SekolahController() {
         model = new SekolahModel();
     }
 
-    public SekolahController(SekolahForm view) {
-        this.view = view;
-        model = new SekolahModel();
-    }
+//    public SekolahController(SekolahForm view) {
+//        this.view = view;
+//        model = new SekolahModel();
+//    }
 
     //2. Metode untuk input data
     public void inputSekolah(String npsn, String nama, String alamat, String kecamatan, String kabupaten, String provinsi, String telp){

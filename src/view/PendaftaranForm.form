@@ -103,9 +103,6 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="99" red="33" type="rgb"/>
         </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
-        </Property>
       </Properties>
 
       <Layout>
@@ -141,7 +138,6 @@
                                       <Component id="txtNISN" alignment="0" min="-2" pref="249" max="-2" attributes="0"/>
                                       <Component id="txtNamaSiswa" alignment="0" min="-2" pref="249" max="-2" attributes="0"/>
                                       <Component id="txtIDSiswa" alignment="0" min="-2" pref="249" max="-2" attributes="0"/>
-                                      <Component id="dateTanggalLahir" alignment="0" min="-2" pref="249" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -184,11 +180,8 @@
                               <Component id="rbLakilaki" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="rbPerempuan" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="dateTanggalLahir" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -318,8 +311,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Perempuan"/>
           </Properties>
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="dateTanggalLahir">
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>

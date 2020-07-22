@@ -29,11 +29,27 @@ public class StaffModel {
         koneksi.getConn();
     }
     
+   
     //3. Mendeklarasikan variabel sesuai tabel dan menerapkan enkapsulasi
+    public void setJabatan(String jabatan) {
+        this.jabatan = jabatan;
+    }
     private String nik;
     private String nama;
     private String telp;
     private String password;
+    private String jenisKel;
+    private String alamat;
+    private String email;
+    private String jabatan;
+    
+    public String getNik() {
+        return nik;
+    }
+
+    public void setNik(String nik) {
+        this.nik = nik;
+    }
 
     public String getNama() {
         return nama;
@@ -43,12 +59,12 @@ public class StaffModel {
         this.nama = nama;
     }
 
-    public String getNik() {
-        return nik;
+    public String getTelp() {
+        return telp;
     }
 
-    public void setNik(String nik) {
-        this.nik = nik;
+    public void setTelp(String telp) {
+        this.telp = telp;
     }
 
     public String getPassword() {
@@ -59,12 +75,33 @@ public class StaffModel {
         this.password = password;
     }
 
-    public String getTelp() {
-        return telp;
+    public String getJenisKel() {
+        return jenisKel;
     }
 
-    public void setTelp(String telp) {
-        this.telp = telp;   }
+    public void setJenisKel(String jenisKel) {
+        this.jenisKel = jenisKel;
+    }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getJabatan() {
+        return jabatan;
+    }
     
     //4. Mendeklarasikan variabel untuk login dan menerapkan enkapsulasi
     private static String nikLogin;
@@ -135,7 +172,8 @@ public class StaffModel {
     public boolean updateStaff(){
         query = "UPDATE staff SET nama_staff = '"+nama+"',"
                 + " no_telp_staff = '"+telp+"', password = '"+password+"'"
-                + " WHERE nik = '"+nik+"'";
+                + " WHERE nik = '"+nik+"'" + "Jenis Kelamin = '"+jenisKel+"', "
+                + "alamat = '"+alamat+"'"+"email = '"+email+"', "+jabatan;
         status = koneksi.eksekusiQuery(query, false);
         return status;
     }
@@ -170,7 +208,8 @@ public class StaffModel {
     //8. Metode untuk input data staff
     public boolean insertStaff(){
         query = "INSERT INTO staff"
-                + " VALUES ('"+nik+"','"+nama+"','"+telp+"','"+password+"')";
+                + " VALUES ('"+nik+"','"+nama+"','"+telp+"','"+
+                password+"','"+jenisKel+"','"+alamat+"',"+email+"','"+jabatan+"')";
         status = koneksi.eksekusiQuery(query, false);
         return status;
     }
