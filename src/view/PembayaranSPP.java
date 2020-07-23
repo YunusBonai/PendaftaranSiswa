@@ -4,19 +4,38 @@
  * and open the template in the editor.
  */
 package view;
+import controller.PembayaranController;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import model.PembayaranModel;
+
+import view.*;
 /**
  *
  * @author Komputer
  */
 public class PembayaranSPP extends javax.swing.JFrame {
-
+    double j = 0,f = 0,mr = 0,ap = 0,m = 0,jn = 0,jl = 0,ag = 0,s = 0,o = 0,n = 0,d = 0;
+    String jr = "",fb = "",mrt = "",apr = "",mei = "",juni = "",juli = "",ags = "",sp = "",ok = "",nm = "",ds = "";
+    double total= j+f+mr+ap+m+jn+jl+ag+s+o+n+d;
+    String ketbayar = ""+jr+""+fb+""+mrt+""+apr+""+mei+""+juni+""+juli+""+ags+""+sp+""+ok+""+nm+""+ds;
+    
     /**
      * Creates new form PembayaranSPP
      */
+    private PembayaranController control;
+    private List<PembayaranModel> listPembayaran;
     public PembayaranSPP() {
         initComponents();
+        control = new PembayaranController(this);
+        
+        
+        
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,6 +71,8 @@ public class PembayaranSPP extends javax.swing.JFrame {
         checkDesember = new javax.swing.JCheckBox();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
+        txtTanggal = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtareaDetail = new javax.swing.JTextArea();
@@ -62,11 +83,11 @@ public class PembayaranSPP extends javax.swing.JFrame {
         txtDibayar = new javax.swing.JTextField();
         txtKembali = new javax.swing.JTextField();
         btnPrint = new javax.swing.JButton();
-        btnRefresh = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
+        btnBayar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtNoKwitansi = new javax.swing.JTextField();
+        txtNoKuitansi = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -121,6 +142,11 @@ public class PembayaranSPP extends javax.swing.JFrame {
         checkJanuari.setFont(new java.awt.Font("Rio Glamour personal use", 0, 14)); // NOI18N
         checkJanuari.setForeground(new java.awt.Color(255, 255, 255));
         checkJanuari.setText("Januari");
+        checkJanuari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkJanuariActionPerformed(evt);
+            }
+        });
 
         checkFebruari.setFont(new java.awt.Font("Rio Glamour personal use", 0, 14)); // NOI18N
         checkFebruari.setForeground(new java.awt.Color(255, 255, 255));
@@ -134,48 +160,102 @@ public class PembayaranSPP extends javax.swing.JFrame {
         checkMaret.setFont(new java.awt.Font("Rio Glamour personal use", 0, 14)); // NOI18N
         checkMaret.setForeground(new java.awt.Color(255, 255, 255));
         checkMaret.setText("Maret");
+        checkMaret.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkMaretActionPerformed(evt);
+            }
+        });
 
         checkApril.setFont(new java.awt.Font("Rio Glamour personal use", 0, 14)); // NOI18N
         checkApril.setForeground(new java.awt.Color(255, 255, 255));
         checkApril.setText("April");
+        checkApril.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkAprilActionPerformed(evt);
+            }
+        });
 
         checkMei.setFont(new java.awt.Font("Rio Glamour personal use", 0, 14)); // NOI18N
         checkMei.setForeground(new java.awt.Color(255, 255, 255));
         checkMei.setText("Mei");
+        checkMei.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkMeiActionPerformed(evt);
+            }
+        });
 
         checkJuni.setFont(new java.awt.Font("Rio Glamour personal use", 0, 14)); // NOI18N
         checkJuni.setForeground(new java.awt.Color(255, 255, 255));
         checkJuni.setText("Juni");
+        checkJuni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkJuniActionPerformed(evt);
+            }
+        });
 
         checkJuli.setFont(new java.awt.Font("Rio Glamour personal use", 0, 14)); // NOI18N
         checkJuli.setForeground(new java.awt.Color(255, 255, 255));
         checkJuli.setText("Juli");
+        checkJuli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkJuliActionPerformed(evt);
+            }
+        });
 
         checkAgustus.setFont(new java.awt.Font("Rio Glamour personal use", 0, 14)); // NOI18N
         checkAgustus.setForeground(new java.awt.Color(255, 255, 255));
         checkAgustus.setText("Agustus");
+        checkAgustus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkAgustusActionPerformed(evt);
+            }
+        });
 
         checkSeptember.setFont(new java.awt.Font("Rio Glamour personal use", 0, 14)); // NOI18N
         checkSeptember.setForeground(new java.awt.Color(255, 255, 255));
         checkSeptember.setText("September");
+        checkSeptember.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkSeptemberActionPerformed(evt);
+            }
+        });
 
         checkOktober.setFont(new java.awt.Font("Rio Glamour personal use", 0, 14)); // NOI18N
         checkOktober.setForeground(new java.awt.Color(255, 255, 255));
         checkOktober.setText("Oktober");
+        checkOktober.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkOktoberActionPerformed(evt);
+            }
+        });
 
         checkNovember.setFont(new java.awt.Font("Rio Glamour personal use", 0, 14)); // NOI18N
         checkNovember.setForeground(new java.awt.Color(255, 255, 255));
         checkNovember.setText("November");
+        checkNovember.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkNovemberActionPerformed(evt);
+            }
+        });
 
         checkDesember.setFont(new java.awt.Font("Rio Glamour personal use", 0, 14)); // NOI18N
         checkDesember.setForeground(new java.awt.Color(255, 255, 255));
         checkDesember.setText("Desember");
+        checkDesember.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkDesemberActionPerformed(evt);
+            }
+        });
 
         jTextArea2.setColumns(20);
         jTextArea2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jTextArea2.setRows(5);
         jTextArea2.setText("Note :\n\nBiaya SPP Perbulan 100.000");
         jScrollPane2.setViewportView(jTextArea2);
+
+        jLabel11.setFont(new java.awt.Font("Rio Glamour personal use", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Tanggal");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -190,36 +270,6 @@ public class PembayaranSPP extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtNoInduk, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(44, 44, 44)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(checkJanuari)
-                                        .addComponent(checkApril, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addComponent(checkOktober)
-                                    .addComponent(checkJuli))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                        .addComponent(checkAgustus)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(checkSeptember))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                        .addComponent(checkNovember)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(checkDesember)
-                                        .addGap(5, 5, 5))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(checkFebruari)
-                                            .addComponent(checkMei))
-                                        .addGap(28, 28, 28)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(checkJuni)
-                                            .addComponent(checkMaret))
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addGap(10, 10, 10))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
@@ -230,7 +280,48 @@ public class PembayaranSPP extends javax.swing.JFrame {
                                     .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane2)))
+                        .addComponent(jScrollPane2))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(jLabel6)
+                                .addGap(44, 44, 44))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel11)
+                                .addGap(85, 85, 85)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(checkJanuari)
+                                        .addComponent(checkApril, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(checkOktober)
+                                    .addComponent(checkJuli))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                        .addComponent(checkAgustus)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(checkSeptember))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(checkFebruari)
+                                            .addComponent(checkMei))
+                                        .addGap(28, 28, 28)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(checkJuni)
+                                            .addComponent(checkMaret))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(checkNovember)
+                                    .addComponent(txtTanggal))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(checkDesember)
+                                .addGap(5, 5, 5)))
+                        .addGap(10, 10, 10)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -269,7 +360,11 @@ public class PembayaranSPP extends javax.swing.JFrame {
                     .addComponent(checkOktober)
                     .addComponent(checkNovember)
                     .addComponent(checkDesember))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -284,6 +379,7 @@ public class PembayaranSPP extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Total Biaya");
 
+        txtTotalBiaya.setText("Rp. 0");
         txtTotalBiaya.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTotalBiayaActionPerformed(evt);
@@ -302,47 +398,67 @@ public class PembayaranSPP extends javax.swing.JFrame {
         btnPrint.setFont(new java.awt.Font("Rio Glamour personal use", 0, 14)); // NOI18N
         btnPrint.setForeground(new java.awt.Color(255, 255, 255));
         btnPrint.setText("Print");
-
-        btnRefresh.setBackground(new java.awt.Color(51, 153, 255));
-        btnRefresh.setFont(new java.awt.Font("Rio Glamour personal use", 0, 14)); // NOI18N
-        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
-        btnRefresh.setText("Refresh");
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintActionPerformed(evt);
+            }
+        });
 
         btnClose.setBackground(new java.awt.Color(51, 153, 255));
         btnClose.setFont(new java.awt.Font("Rio Glamour personal use", 0, 14)); // NOI18N
         btnClose.setForeground(new java.awt.Color(255, 255, 255));
         btnClose.setText("Tutup");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+
+        btnBayar.setBackground(new java.awt.Color(51, 153, 255));
+        btnBayar.setFont(new java.awt.Font("Rio Glamour personal use", 0, 14)); // NOI18N
+        btnBayar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBayar.setText("Bayar");
+        btnBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBayarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addComponent(jLabel8)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addContainerGap()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10))
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtKembali, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                            .addComponent(txtDibayar))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtTotalBiaya)
+                            .addComponent(jScrollPane1)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel10))
+                                .addGap(25, 25, 25)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtKembali, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                                    .addComponent(txtDibayar))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtTotalBiaya)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(111, 111, 111)
+                                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRefresh)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(91, 91, 91)
+                                .addComponent(jLabel8))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -362,21 +478,19 @@ public class PembayaranSPP extends javax.swing.JFrame {
                     .addComponent(txtKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBayar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPrint)
-                    .addComponent(btnRefresh)
-                    .addComponent(btnClose))
-                .addContainerGap())
+                    .addComponent(btnClose)))
         );
 
         jPanel5.setBackground(new java.awt.Color(51, 153, 255));
 
         jLabel2.setFont(new java.awt.Font("Rio Glamour personal use", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("No Kwitansi");
+        jLabel2.setText("No Kuitansi");
 
         jLabel7.setFont(new java.awt.Font("Rio Glamour personal use", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -390,8 +504,8 @@ public class PembayaranSPP extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNoKwitansi, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 263, Short.MAX_VALUE)
+                .addComponent(txtNoKuitansi, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 264, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addGap(196, 196, 196))
         );
@@ -400,7 +514,7 @@ public class PembayaranSPP extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNoKwitansi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNoKuitansi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel7))
                 .addContainerGap())
@@ -450,16 +564,213 @@ public class PembayaranSPP extends javax.swing.JFrame {
 
     private void checkFebruariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkFebruariActionPerformed
         // TODO add your handling code here:
+        if (checkFebruari.isSelected()) {
+            f=100000;
+        }
+        else{
+            f=0;
+        }
+        fb = "Februari,";
+        total= j+f+mr+ap+m+jn+jl+ag+s+o+n+d;
+            String ketbayar = ""+jr+""+fb+""+mrt+""+apr+""+mei+""+juni+""+juli+""+ags+""+sp+""+ok+""+nm+""+ds;
+
+        txtTotalBiaya.setText("Rp." + total );
     }//GEN-LAST:event_checkFebruariActionPerformed
 
     private void txtTotalBiayaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalBiayaActionPerformed
         // TODO add your handling code here:
+       
     }//GEN-LAST:event_txtTotalBiayaActionPerformed
+
+    private void checkJanuariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkJanuariActionPerformed
+        // TODO add your handling code here:
+        if (checkJanuari.isSelected()) {
+            j=100000;
+        }
+        else{
+            j=0;
+        }
+        jr = "Januari,";
+            String ketbayar = ""+jr+""+fb+""+mrt+""+apr+""+mei+""+juni+""+juli+""+ags+""+sp+""+ok+""+nm+""+ds;
+
+        total= j+f+mr+ap+m+jn+jl+ag+s+o+n+d;
+        txtTotalBiaya.setText("Rp." + total );
+    }//GEN-LAST:event_checkJanuariActionPerformed
+
+    private void checkMaretActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMaretActionPerformed
+        // TODO add your handling code here:
+        if (checkMaret.isSelected()) {
+            mr=100000;
+        }
+        else{
+            mr=0;
+        }mrt = "Maret,";
+            String ketbayar = ""+jr+""+fb+""+mrt+""+apr+""+mei+""+juni+""+juli+""+ags+""+sp+""+ok+""+nm+""+ds;
+
+        total= j+f+mr+ap+m+jn+jl+ag+s+o+n+d;
+        txtTotalBiaya.setText("Rp." + total );
+    }//GEN-LAST:event_checkMaretActionPerformed
+
+    private void checkAprilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAprilActionPerformed
+        // TODO add your handling code here:
+        if (checkApril.isSelected()) {
+            ap=100000;
+        }
+        else{
+            ap=0;
+        }apr = "April,";
+            String ketbayar = ""+jr+""+fb+""+mrt+""+apr+""+mei+""+juni+""+juli+""+ags+""+sp+""+ok+""+nm+""+ds;
+
+        total= j+f+mr+ap+m+jn+jl+ag+s+o+n+d;
+        txtTotalBiaya.setText("Rp." + total );
+    }//GEN-LAST:event_checkAprilActionPerformed
+
+    private void checkMeiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMeiActionPerformed
+        // TODO add your handling code here:
+        if (checkMei.isSelected()) {
+            m=100000;
+        }
+        else{
+            m=0;
+        }mei = "Mei,";
+            String ketbayar = ""+jr+""+fb+""+mrt+""+apr+""+mei+""+juni+""+juli+""+ags+""+sp+""+ok+""+nm+""+ds;
+
+        total= j+f+mr+ap+m+jn+jl+ag+s+o+n+d;
+        txtTotalBiaya.setText("Rp." + total );
+    }//GEN-LAST:event_checkMeiActionPerformed
+
+    private void checkJuniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkJuniActionPerformed
+        // TODO add your handling code here:
+        if (checkJuni.isSelected()) {
+            jn=100000;
+        }
+        else{
+            jn=0;
+        }juni = "Juni,";
+            String ketbayar = ""+jr+""+fb+""+mrt+""+apr+""+mei+""+juni+""+juli+""+ags+""+sp+""+ok+""+nm+""+ds;
+
+        total= j+f+mr+ap+m+jn+jl+ag+s+o+n+d;
+        txtTotalBiaya.setText("Rp." + total );
+    }//GEN-LAST:event_checkJuniActionPerformed
+
+    private void checkJuliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkJuliActionPerformed
+        // TODO add your handling code here:
+        if (checkJuli.isSelected()) {
+            jl=100000;
+        }
+        else{
+            jl=0;
+        }juli = "Juli,";
+            String ketbayar = ""+jr+""+fb+""+mrt+""+apr+""+mei+""+juni+""+juli+""+ags+""+sp+""+ok+""+nm+""+ds;
+
+        total= j+f+mr+ap+m+jn+jl+ag+s+o+n+d;
+        txtTotalBiaya.setText("Rp." + total );
+    }//GEN-LAST:event_checkJuliActionPerformed
+
+    private void checkAgustusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAgustusActionPerformed
+        // TODO add your handling code here:
+        if (checkAgustus.isSelected()) {
+            ag=100000;
+        }
+        else{
+            ag=0;
+        }ags = "Agustus,";
+            String ketbayar = ""+jr+""+fb+""+mrt+""+apr+""+mei+""+juni+""+juli+""+ags+""+sp+""+ok+""+nm+""+ds;
+
+        total= j+f+mr+ap+m+jn+jl+ag+s+o+n+d;
+        txtTotalBiaya.setText("Rp." + total );
+    }//GEN-LAST:event_checkAgustusActionPerformed
+
+    private void checkSeptemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSeptemberActionPerformed
+        // TODO add your handling code here:
+        if (checkSeptember.isSelected()) {
+            s=100000;
+        }
+        else{
+            s=0;
+        }sp = "September,";
+            String ketbayar = ""+jr+""+fb+""+mrt+""+apr+""+mei+""+juni+""+juli+""+ags+""+sp+""+ok+""+nm+""+ds;
+
+        total= j+f+mr+ap+m+jn+jl+ag+s+o+n+d;
+        txtTotalBiaya.setText("Rp." + total );
+    }//GEN-LAST:event_checkSeptemberActionPerformed
+
+    private void checkOktoberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkOktoberActionPerformed
+        // TODO add your handling code here:
+        if (checkOktober.isSelected()) {
+            o=100000;
+        }
+        else{
+            o=0;
+        }ok = "Oktober,";
+            String ketbayar = ""+jr+""+fb+""+mrt+""+apr+""+mei+""+juni+""+juli+""+ags+""+sp+""+ok+""+nm+""+ds;
+
+        total= j+f+mr+ap+m+jn+jl+ag+s+o+n+d;
+        txtTotalBiaya.setText("Rp." + total );
+    }//GEN-LAST:event_checkOktoberActionPerformed
+
+    private void checkNovemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkNovemberActionPerformed
+        // TODO add your handling code here:
+        if (checkNovember.isSelected()) {
+            n=100000;
+        }
+        else{
+            n=0;
+        }nm = "November,";
+            String ketbayar = ""+jr+""+fb+""+mrt+""+apr+""+mei+""+juni+""+juli+""+ags+""+sp+""+ok+""+nm+""+ds;
+
+        total= j+f+mr+ap+m+jn+jl+ag+s+o+n+d;
+        txtTotalBiaya.setText("Rp." + total );
+    }//GEN-LAST:event_checkNovemberActionPerformed
+
+    private void checkDesemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkDesemberActionPerformed
+        // TODO add your handling code here:
+        if (checkDesember.isSelected()) {
+            d=100000;
+        }
+        else{
+            d=0;
+        }ds = "Desember";
+            String ketbayar = ""+jr+""+fb+""+mrt+""+apr+""+mei+""+juni+""+juli+""+ags+""+sp+""+ok+""+nm+""+ds;
+
+        total= j+f+mr+ap+m+jn+jl+ag+s+o+n+d;
+        txtTotalBiaya.setText("Rp." + total );
+    }//GEN-LAST:event_checkDesemberActionPerformed
+
+    private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarActionPerformed
+        // TODO add your handling code here:
+        ketbayar = ""+jr+""+fb+""+mrt+""+apr+""+mei+""+juni+""+juli+""+ags+""+sp+""+ok+""+nm+""+ds;
+        control.inputPembayaran(txtNoKuitansi.getText(), ketbayar, txtNoInduk.getText(), txtNama.getText(), total, txtTanggal.getText());
+        String bayaran = txtDibayar.getText();
+        double bayarin = Double.parseDouble(bayaran);
+        double kembalian = bayarin - total;
+        txtKembali.setText("Rp. "+ kembalian);
+        
+        boolean hasil = control.insertPembayaran();
+      if(hasil){
+          JOptionPane.showMessageDialog(null, "Data Pendaftar telah tersimpan");
+          
+      } else {
+          JOptionPane.showMessageDialog(null, "Maaf penyimpanan data gagal," + " silahkan cek kembali data yang diinputkan");
+      }
+    }//GEN-LAST:event_btnBayarActionPerformed
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        // TODO add your handling code here:
+        dispose();
+//        JOptionPane.showMessageDialog(null, ketbayar);
+    }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnPrintActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -492,9 +803,9 @@ public class PembayaranSPP extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBayar;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnPrint;
-    private javax.swing.JButton btnRefresh;
     private javax.swing.JComboBox<String> cbKelas;
     private javax.swing.JCheckBox checkAgustus;
     private javax.swing.JCheckBox checkApril;
@@ -510,6 +821,7 @@ public class PembayaranSPP extends javax.swing.JFrame {
     private javax.swing.JCheckBox checkSeptember;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -530,7 +842,8 @@ public class PembayaranSPP extends javax.swing.JFrame {
     private javax.swing.JTextField txtKembali;
     private javax.swing.JTextField txtNama;
     private javax.swing.JTextField txtNoInduk;
-    private javax.swing.JTextField txtNoKwitansi;
+    private javax.swing.JTextField txtNoKuitansi;
+    private javax.swing.JTextField txtTanggal;
     private javax.swing.JTextField txtTotalBiaya;
     private javax.swing.JTextArea txtareaDetail;
     // End of variables declaration//GEN-END:variables

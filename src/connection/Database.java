@@ -32,7 +32,7 @@ public class Database {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 try {
-                    String url = "jdbc:mysql://localhost:3306/pmb_db";
+                    String url = "jdbc:mysql://localhost:3306/pendaftaran_siswa";
                     conn = DriverManager.getConnection(url, "root", "");
                     System.out.println("Koneksi Sukses");
                 } catch (SQLException se) {

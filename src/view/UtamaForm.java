@@ -86,6 +86,11 @@ public class UtamaForm extends javax.swing.JFrame {
         lblPembayaranSPP.setForeground(new java.awt.Color(255, 255, 255));
         lblPembayaranSPP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/SPP.png"))); // NOI18N
         lblPembayaranSPP.setText("   Pembayaran SPP");
+        lblPembayaranSPP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblPembayaranSPPMouseClicked(evt);
+            }
+        });
         jPanel1.add(lblPembayaranSPP, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, -1, -1));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -146,6 +151,14 @@ public class UtamaForm extends javax.swing.JFrame {
         form.setVisible(true);
         dpUtama.add(form);
     }//GEN-LAST:event_lblDataStaffMouseClicked
+
+    private void lblPembayaranSPPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPembayaranSPPMouseClicked
+        // TODO add your handling code here:
+        dpUtama.removeAll();
+        PembayaranSPP form = new PembayaranSPP();
+        form.setVisible(true);
+        dpUtama.add(form);
+    }//GEN-LAST:event_lblPembayaranSPPMouseClicked
 
     /**
      * @param args the command line arguments
